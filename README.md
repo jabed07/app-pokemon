@@ -70,3 +70,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * Page refresh should maintain the sorting and search related data. (Inprogress)
 * User should be taken to the details page and present all the information available for
     that Pokémon. The user should have a link to go back to the previous page. (Completed)
+
+
+## Bonus points 
+    * Keyboard navigation (Partially Implemented)
+    * Performance optimized code (Can be further optimized)
+    * Linter configurations and pre-commit / pre-push hooks (Completed)
