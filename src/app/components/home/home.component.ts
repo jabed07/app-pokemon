@@ -22,7 +22,7 @@
 
 
  export class HomeComponent implements OnInit {
- 	active:string;
+ 	active: string;
  	constructor(private router: Router) {
  		this.router.events.subscribe((val) => {
  			this.routeChanged(val);
@@ -33,7 +33,7 @@
  	}
 
  	// Detect route changes for active sidebar menu
- 	routeChanged(val){
+ 	routeChanged(val) {
  		this.active = val.url;
  	}
 

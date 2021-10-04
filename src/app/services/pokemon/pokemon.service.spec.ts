@@ -1,7 +1,8 @@
 /**
- * Created By : Jabed Al Hassan 
+ * Created By : Jabed Al Hassan
  */
 
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { PokemonService } from './pokemon.service';
@@ -9,7 +10,8 @@ import { PokemonService } from './pokemon.service';
 describe('PokemonService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PokemonService]
+      providers: [PokemonService],
+      imports: [HttpClientModule]
     });
   });
 
@@ -19,5 +21,5 @@ describe('PokemonService', () => {
 });
 
 /**
- * Created By : Jabed Al Hassan 
+ * Created By : Jabed Al Hassan
  */

@@ -17,24 +17,24 @@
  })
 
  export class PokemonDetailsComponent implements OnInit {
- 	index:any;
+ 	index: any;
 	isAbilities: boolean = false;
 	isMove: boolean = false;
 	isType: boolean = false;
 	isGames: boolean = false;
 	isBasic: boolean = true;
- 	pokemonDetails:any;
-	abilityDetails:any = [];
-	typeDetails:any = [];
-	gameDetails:any = [];
+ 	pokemonDetails: any;
+	abilityDetails: any = [];
+	typeDetails: any = [];
+	gameDetails: any = [];
 	abilityList: any;
-	movesList:any;
+	movesList: any;
 	typesList: any;
  	constructor(private router: Router, private route: ActivatedRoute, private pokemonService:PokemonService) { 
  		// Get user detail index number sent in params
  		this.route.params.subscribe(params => {
  			this.index = params['id'];
- 			if (this.index && this.index != null && this.index != undefined) {
+ 			if (this.index && this.index != null && this.index !== undefined) {
 				 this.getPokemonDetails(this.index);
  			}
  		});
@@ -45,7 +45,7 @@
 
  	// Get pokemon details 
 	 getPokemonDetails(index:number){
-	this.pokemonService.getPokemonDetailsById(index).subscribe((data: any) =>{
+	this.pokemonService.getPokemonDetailsById(index).subscribe((data: any) => {
 		if(data){
 			this.pokemonDetails = data;
 		}
@@ -64,7 +64,7 @@
 					this.abilityDetails.push(abilityData);
 				}
 			} );
-		})
+		});
 	}
 	public getMoves(movesData){
 		this.isAbilities =false;
@@ -83,24 +83,24 @@
 		this.typesList = typesData;
 		typesData.forEach((typeData)=>{
 			this.pokemonService.getAllSubData(typeData.type.url).subscribe((typeData: any) =>{
-				if(typeData){
+				if (typeData) {
 					this.typeDetails.push(typeData);
 				}
 			} );
-		})
+		});
 	}
 	public getBasicDetails(){
 		this.isAbilities =false;
 		this.isMove = false;
 		this.isType = false;
-		this.isGames = false
+		this.isGames = false;
 		this.isBasic = true;
 	}
 	public getGames(gamesData){
 		this.isAbilities =false;
 		this.isMove = false;
 		this.isType = false;
-		this.isGames = true
+		this.isGames = true;
 		this.isBasic = false;
 		gamesData.forEach((gameData)=>{
 			this.pokemonService.getAllSubData(gameData.version.url).subscribe((typeData: any) =>{

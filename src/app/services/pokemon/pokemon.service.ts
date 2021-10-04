@@ -1,5 +1,5 @@
 /**
- * Created By : Jabed Al Hassan 
+ * Created By : Jabed Al Hassan
  */
 
  import { Injectable } from '@angular/core';
@@ -27,5 +27,5 @@
 
  }
 /**
- * Created By : Jabed Al Hassan 
+ * Created By : Jabed Al Hassan
  */

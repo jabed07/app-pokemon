@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { enableProdMode } from '@angular/core';
 
-//Modules
+// Modules
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -23,12 +23,12 @@ import { HomeComponent, homeChildRoutes } from './components/home/home.component
 
 
 // Parent Routes
-const routes : Routes = [
+const routes: Routes = [
 {
 	path: '',
 	component: HomeComponent,
-	children :homeChildRoutes,
-	canActivate : []
+	children: homeChildRoutes,
+	canActivate: []
 },
 {
 	path: '**',
