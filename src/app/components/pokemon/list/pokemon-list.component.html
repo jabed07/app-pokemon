@@ -1,0 +1,61 @@
+<!-- Created By : Jabed Al Hassan  -->
+
+<div class="w3-container" *ngIf="pokemonList">
+	<div class="w3-panel w3-round-small w3-teal">
+		<div class="w3-left">
+			<h3>Pokemon List </h3>
+		</div>
+		<div class="w3-right pad-top"><span><i class="w3-medium fa fa-search"></i> Search : <input class="" type="text"
+					[(ngModel)]='filterData'></span></div>
+	</div>
+
+	<div class="dropdown">
+		<a>Sort By: <i class="fa fa-sort"></i></a>
+		<div class="dropdown-content">
+			<a class="w3-bar-item" *ngFor="let sortItem of sortList"
+				(click)="sortPokeMonBy(sortItem.value)">{{sortItem.name}}</a>
+		</div>
+	</div>
+	<div class="pagination w3-right-align ">
+
+		<a class="mouse-style" disabled ="limitIndex === 10"  (click)="getPreviousData()">Prev</a>
+		<a (click)="getIncrementedData(count)" class="mouse-style" *ngFor="let count of paginationList"
+			[ngClass]="{activeColor: isActive(count)}">{{count}}</a>
+
+		<a class="mouse-style" (click)="getNextData()">Next</a>
+	</div>
+	<div *ngIf="pokemonList && pokemonList.length > 0">
+	<div class="w3-panel w3-green" *ngIf="(pokemonList | filter:filterData).length === 0">
+		<h3>Oh no</h3>
+		<p>No pokemons found <span *ngIf="filterData"> with search "{{filterData}}"</span> </p>
+	</div>
+</div>
+	<div class="w3-panel w3-light-grey w3-padding-16 w3-card-2"
+		*ngIf="(pokemonList | filter:filterData | filter:filterData).length != 0">
+		<div class="row">
+			<div class="column" *ngFor="let pokemon of pokemonList | filter:filterData; index as i;">
+				<div class="w3-container w3-center card" [routerLink]="['detail', pokemon.id]">
+					<img [src]="pokemon.sprites.front_default" alt="pokemon">
+					<div class="w3-container w3-left-align">
+						<p> <b>Name: </b>{{pokemon.name}}</p>
+						<p><b>Height: </b>{{pokemon.height}}</p>
+						<p><b>Weight: </b>{{pokemon.weight}}</p>
+						<p><b>List of abilities: </b></p>
+						<span *ngFor="let ability of pokemon.abilities">
+							{{ability.ability.name}}
+						</span>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+<div class="w3-container">
+	<div class="pagination w3-right-align ">
+
+		<a class="mouse-style" disabled= "limitIndex <= 10 " (click)="getPreviousData()">Prev</a>
+
+		<a class="mouse-style" (click)="getNextData()">Next</a>
+	</div>
+</div>

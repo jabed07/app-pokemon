@@ -24,7 +24,6 @@
  export class HomeComponent implements OnInit {
  	active:string;
  	constructor(private router: Router) {
- 		// Detect route changes for active sidebar menu
  		this.router.events.subscribe((val) => {
  			this.routeChanged(val);
  		});

@@ -1,0 +1,93 @@
+<!-- Created By : Jabed Al Hassan  -->
+
+<div class="w3-container" *ngIf="pokemonDetails">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>Pokemon Details <button routerLink="/" class="w3-button w3-green custom-button margin-right"> <i
+					class="w3-medium fa fa-chevron-left"></i> Back</button></h3>
+	</div>
+	<div class=" w3-card custom-card"><br>
+		<div class="w3-center">
+			<img [src]="pokemonDetails.sprites.front_default" alt="pokemon">
+		</div>
+
+		<h3 class="text-center">{{pokemonDetails.name}} </h3>
+		<hr>
+		<table class="w3-table w3-bordered">
+			<tr>
+				<td>Height: <b>{{pokemonDetails.height}}</b></td>
+				<td>Weight : <b>{{pokemonDetails.weight}}</b></td>
+			</tr>
+			<tr>
+				<button class="tab-Width" title="Click to see the move details" [ngClass]="{activeColor: isBasic}"
+					(click)="getBasicDetails()">Details</button>
+				<button class="tab-Width" title="Click to see the move details" [ngClass]="{activeColor: isMove}"
+					(click)="getMoves(pokemonDetails.moves)">Moves</button>
+				<button class="tab-Width"title="Click to see the type details" [ngClass]="{activeColor: isType}"
+					(click)="getTypes(pokemonDetails.types)">Types</button>
+				<button class="tab-Width" title="Click to see the ability details" [ngClass]="{activeColor: isAbilities}"
+					(click)="getAbilities(pokemonDetails.abilities)">Abilities</button>
+				<button class="tab-Width" title="Click to see the game details" [ngClass]="{activeColor: isGames}"
+					(click)="getGames(pokemonDetails.game_indices)">Games</button>
+					
+				<div *ngIf="isBasic"  class="tabcontent">
+						<div class="div-style" >
+							<p *ngIf="pokemonDetails.stats.length > 0 ">No. of Available Stats: <b>{{pokemonDetails.stats.length}}</b></p> 
+							<p *ngIf="pokemonDetails.forms.length > 0 ">No. of Available Forms: <b>{{pokemonDetails.forms.length}}</b></p> 
+							<p *ngIf="pokemonDetails.held_items.length > 0 ">No. of Available Held Items: <b>{{pokemonDetails.held_items.length}}</b></p>
+							<p *ngIf="pokemonDetails.moves.length > 0 ">No. of Available Moves: <b>{{pokemonDetails.moves.length}}</b></p>
+							<p *ngIf="pokemonDetails.past_types.length > 0 ">No. of Available Past Types: <b>{{pokemonDetails.past_types.length}}</b></p>
+							<p *ngIf="pokemonDetails.game_indices.length > 0 ">No. of Available Games Indices: <b>{{pokemonDetails.game_indices.length}}</b></p>
+							<p *ngIf="pokemonDetails.abilities.length > 0 ">No. of Available Abilities: <b>{{pokemonDetails.abilities.length}}</b></p>
+						</div>
+					</div>
+				<div *ngIf="isAbilities"  class="tabcontent">
+					<div class="div-style" *ngFor="let data of abilityDetails"> <span><b>Name:</b>
+							<b>{{data.name}}</b></span>
+						<p *ngFor="let effectData of data.effect_entries"><b>Effect :</b> {{effectData.effect}}</p>
+					</div>
+				</div>
+				<div *ngIf="isMove" class="tabcontent">
+					<div class="div-style" *ngFor="let data of movesList"> <span>Name: <b>{{data.move.name}}</b></span>
+						<p *ngFor="let versionGp of data.version_group_details">
+							Move Learn Name: <b>{{versionGp.move_learn_method.name}}</b> <br />
+							Version Group Name: <b>{{versionGp.version_group.name}}</b>
+						</p><br />
+					</div>
+				</div>
+				<div *ngIf="isType" class="tabcontent">
+					<div class="div-style" *ngFor="let typeData of typeDetails"> <span>Name:
+							<b>{{typeData.name}}</b></span>
+						<div *ngFor="let damageData of typeData.damage_relations.double_damage_from">
+							<p>Double Damage From: <b>{{damageData.name}}</b></p>
+
+						</div><br />
+						<div *ngFor="let damageData of typeData.damage_relations.double_damage_to">
+							<p>Double Damage To: <b>{{damageData.name}}</b></p>
+
+						</div><br />
+						<div *ngFor="let halfDamageFrom of typeData.damage_relations.half_damage_from">
+							<p>Half Damage From: <b>{{halfDamageFrom.name}}</b></p>
+
+						</div><br />
+						<div *ngFor="let halfDamageTo of typeData.damage_relations.half_damage_to">
+							<p>Half Damage To: <b>{{halfDamageTo.name}}</b></p>
+
+						</div><br />
+					</div>
+				</div>
+				<div *ngIf="isGames" class="tabcontent">
+					<div class="div-style" *ngFor="let gameData of gameDetails">
+						<span>Game Name: <b>{{gameData.name}}</b></span><br />
+						<span>Version Group Name: <b>{{gameData.version_group.name}}</b></span>
+						<p *ngFor="let language of gameData.names">
+							Language Name: <b>{{language.name}}</b><br />
+							Language Origin: <b>{{language.language.name}}</b>
+						</p><br />
+					</div>
+				</div>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- Created By : Jabed Al Hassan  -->
