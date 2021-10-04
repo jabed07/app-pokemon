@@ -7,7 +7,7 @@ import {trigger, state, animate, style, transition} from '@angular/core';
 
 @Injectable()
 export class ConfigService {
-	apiURL:string;
+	apiURL: string;
 	constructor() {
 	}
 
@@ -24,11 +24,11 @@ export function routerTransition() {
 function slideToLeft() {
 	return trigger('routerTransition', [
 		transition(':enter', [
-			style({transform: 'translateX(100%)', position:'fixed', width:'100%'}),
+			style({transform: 'translateX(100%)', position: 'fixed', width: '100%'}),
 			animate('0.5s ease-in-out', style({transform: 'translateX(0%)'}))
 			]),
 		transition(':leave', [
-			style({transform: 'translateX(0%)', position:'fixed', width:'100%'}),
+			style({transform: 'translateX(0%)', position: 'fixed', width: '100%'}),
 			animate('0.5s ease-in-out', style({transform: 'translateX(-100%)'}))
 			])
 		]);

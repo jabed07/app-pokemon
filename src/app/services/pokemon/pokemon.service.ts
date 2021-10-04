@@ -8,19 +8,19 @@
  @Injectable()
  export class PokemonService {
 
-   constructor(private httpClient: HttpClient,) { }
+   constructor(private httpClient: HttpClient) { }
 
-   getPokemonDetailsById(index:number){
-    return this.httpClient.get("https://pokeapi.co/api/v2/pokemon/"+ index).pipe(data => data);
+   getPokemonDetailsById(index: number) {
+    return this.httpClient.get("https://pokeapi.co/api/v2/pokemon/" + index).pipe(data => data);
    }
 
-   getAllPokemonList(limitValue,offsetValue){
-    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon?limit=`+limitValue+`&offset=`+offsetValue).pipe(data => data);
+   getAllPokemonList(limitValue, offsetValue) {
+    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon?limit=` + limitValue + `&offset=` + offsetValue).pipe(data => data);
    }
-   getAllPokemonByIds(pokemonUrl){
+   getAllPokemonByIds(pokemonUrl) {
     return this.httpClient.get(pokemonUrl).pipe(data => data);
    }
-   getAllSubData(url){
+   getAllSubData(url) {
     return this.httpClient.get(url).pipe(data => data);
    }
 

@@ -3,7 +3,7 @@
  */
 
  import { Component, OnInit } from '@angular/core';
- import { RouterModule, Routes ,Router} from '@angular/router';
+ import { RouterModule, Routes , Router} from '@angular/router';
 
  // Components
  import { PokemonListComponent } from '../pokemon/list/pokemon-list.component';
@@ -42,7 +42,7 @@
 
 
  // Define and export child routes of HomeComponent
- export const homeChildRoutes : Routes = [
+ export const homeChildRoutes: Routes = [
  {
  	path: '',
  	component: PokemonListComponent

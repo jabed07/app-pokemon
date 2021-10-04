@@ -2,7 +2,7 @@
  * Created By : Jabed Al Hassan 
  */
  import { Component, OnInit } from '@angular/core';
- import { Router,ActivatedRoute} from '@angular/router';
+ import { Router, ActivatedRoute} from '@angular/router';
 
  // Services
  import { PokemonService } from '../../../services/pokemon/pokemon.service';
@@ -18,11 +18,11 @@
 
  export class PokemonDetailsComponent implements OnInit {
  	index: any;
-	isAbilities: boolean = false;
-	isMove: boolean = false;
-	isType: boolean = false;
-	isGames: boolean = false;
-	isBasic: boolean = true;
+	isAbilities = false;
+	isMove = false;
+	isType = false;
+	isGames = false;
+	isBasic = true;
  	pokemonDetails: any;
 	abilityDetails: any = [];
 	typeDetails: any = [];
@@ -30,7 +30,7 @@
 	abilityList: any;
 	movesList: any;
 	typesList: any;
- 	constructor(private router: Router, private route: ActivatedRoute, private pokemonService:PokemonService) { 
+ 	constructor(private router: Router, private route: ActivatedRoute, private pokemonService: PokemonService) { 
  		// Get user detail index number sent in params
  		this.route.params.subscribe(params => {
  			this.index = params['id'];
@@ -44,68 +44,68 @@
  	}
 
  	// Get pokemon details 
-	 getPokemonDetails(index:number){
+	 getPokemonDetails(index: number) {
 	this.pokemonService.getPokemonDetailsById(index).subscribe((data: any) => {
-		if(data){
+		if (data) {
 			this.pokemonDetails = data;
 		}
 	} );
 	}
-	public getAbilities(abilities){
+	public getAbilities(abilities) {
 		this.abilityList = abilities;
 		this.isMove = false;
 		this.isType = false;
 		this.isGames = false;
 		this.isBasic = false;
 		this.isAbilities = true;
-		abilities.forEach((ability)=>{
-			this.pokemonService.getAllSubData(ability.ability.url).subscribe((abilityData: any) =>{
-				if(abilityData){
+		abilities.forEach((ability) => {
+			this.pokemonService.getAllSubData(ability.ability.url).subscribe((abilityData: any) => {
+				if (abilityData) {
 					this.abilityDetails.push(abilityData);
 				}
 			} );
 		});
 	}
-	public getMoves(movesData){
-		this.isAbilities =false;
+	public getMoves(movesData) {
+		this.isAbilities = false;
 		this.isMove = true;
 		this.isType = false;
 		this.isGames = false;
 		this.isBasic = false;
 		this.movesList = movesData;
 	}
-	public getTypes(typesData){
-		this.isAbilities =false;
+	public getTypes(typesData) {
+		this.isAbilities = false;
 		this.isMove = false;
 		this.isType = true;
 		this.isGames = false;
 		this.isBasic = false;
 		this.typesList = typesData;
-		typesData.forEach((typeData)=>{
-			this.pokemonService.getAllSubData(typeData.type.url).subscribe((typeData: any) =>{
-				if (typeData) {
-					this.typeDetails.push(typeData);
+		typesData.forEach((typeData) => {
+			this.pokemonService.getAllSubData(typeData.type.url).subscribe((typeValue: any) => {
+				if (typeValue) {
+					this.typeDetails.push(typeValue);
 				}
 			} );
 		});
 	}
-	public getBasicDetails(){
-		this.isAbilities =false;
+	public getBasicDetails() {
+		this.isAbilities = false;
 		this.isMove = false;
 		this.isType = false;
 		this.isGames = false;
 		this.isBasic = true;
 	}
-	public getGames(gamesData){
-		this.isAbilities =false;
+	public getGames(gamesData) {
+		this.isAbilities = false;
 		this.isMove = false;
 		this.isType = false;
 		this.isGames = true;
 		this.isBasic = false;
-		gamesData.forEach((gameData)=>{
-			this.pokemonService.getAllSubData(gameData.version.url).subscribe((typeData: any) =>{
-				if(typeData){
-					this.gameDetails.push(typeData);
+		gamesData.forEach((gameData) => {
+			this.pokemonService.getAllSubData(gameData.version.url).subscribe((game: any) => {
+				if (game) {
+					this.gameDetails.push(game);
 				}
 			} );
 		});

@@ -19,8 +19,8 @@ import { routerTransition } from '../../../services/config/config.service';
 export class PokemonListComponent implements OnInit {
 	paginationList: any = [10, 20, 50];
 	sortList: any = [{ name: "Name", value: "name" }, { name: "Height", value: "height" }, { name: "Weight", value: "weight" }];
-	limitIndex: number = 20;
-	offsetValue: number = 0;
+	limitIndex = 20;
+	offsetValue = 0;
 	pokemonListData: any;
 	pokemonList: any = [];
 	constructor(private pokemonService: PokemonService) { }
@@ -37,7 +37,7 @@ export class PokemonListComponent implements OnInit {
 				const pokemonIDS = data.results;
 				pokemonIDS.forEach((pokemon: any) => {
 					this.getPokemonById(pokemon.url);
-				})
+				});
 			}
 
 		});
@@ -73,10 +73,10 @@ export class PokemonListComponent implements OnInit {
 
 	public isActive(item) {
 		return this.limitIndex === item;
-	};
+	}
 	public sortPokeMonBy(value) {
 		if (value === "name") {
-			this.pokemonList = this.pokemonList.sort((a, b) => a.name.localeCompare(b.name))
+			this.pokemonList = this.pokemonList.sort((a, b) => a.name.localeCompare(b.name));
 		} else if (value === "height") {
 			this.pokemonList = this.pokemonList.sort((a, b) => {
 				return a.height - b.height;
